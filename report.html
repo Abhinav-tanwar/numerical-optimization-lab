@@ -1,0 +1,147 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Numerical Optimization Lab</title><style>body{font:16px/1.55 system-ui;background:#eef3f6;color:#173448;margin:0}main{max-width:1100px;margin:auto;padding:36px 24px}header{border-top:5px solid #28778b;padding-top:18px}.eyebrow{font-size:12px;letter-spacing:2px;color:#28778b}h1{font-size:39px;line-height:1.15;letter-spacing:-1px}h2{font-size:22px;margin-top:28px}a{color:#246a80}.notice{background:#fff1dc;padding:14px 18px;border-left:4px solid #cc873e}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:16px}.card,details{background:white;border:1px solid #d2dfe7;border-radius:10px;padding:18px}.card h2{margin:10px 0;font-size:21px}.card p{font-size:14px;color:#51697a}.card{color:inherit;text-decoration:none}table{background:white;border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:9px;border-bottom:1px solid #dce5eb;overflow-wrap:anywhere}pre{font-size:12px;overflow:auto}img{max-width:100%;border-radius:8px}footer{margin-top:30px;font-size:13px;color:#51697a}</style></head><body><main><header><p class="eyebrow">ABHINAV TANWAR · PYTHON ANALYSIS</p><h1>Numerical Optimization Lab</h1><p>Constrained extrema, trust regions, conjugate gradients, and Pareto tradeoffs.</p></header><h2>Scope and methods</h2><p>Consolidates related numerical-method sections rather than presenting every exercise as a different product. Scalar and separable box extrema are certified by enumerating stationary and boundary candidates. Constrained projection includes a feasibility residual. Rosenbrock trust-region runs record optimizer status and gradient norms. Linear conjugate gradient checks symmetric positive-definite inputs and reports residuals and conditioning on Hilbert systems; a small residual alone does not establish an accurate solution. Nonlinear Fletcher–Reeves uses bounded backtracking and descent restarts. Weighted-sum Pareto points are candidates, not a claim that every Pareto solution was recovered.</p><h2>Measured results</h2><table><tr><th>Calculated measure</th><th>Value</th></tr><tr><td>scalar global / x</td><td>-1.606</td></tr><tr><td>scalar global / objective</td><td>-19.09</td></tr><tr><td>constrained projection / objective</td><td>3.365</td></tr><tr><td>constrained projection / max violation</td><td>7.772e-15</td></tr><tr><td>hilbert systems / 5 / iterations</td><td>7</td></tr><tr><td>hilbert systems / 5 / condition number</td><td>4.766e+05</td></tr><tr><td>hilbert systems / 5 / relative residual</td><td>2.349e-12</td></tr><tr><td>hilbert systems / 8 / iterations</td><td>23</td></tr><tr><td>hilbert systems / 8 / condition number</td><td>1.526e+10</td></tr><tr><td>hilbert systems / 8 / relative residual</td><td>1.084e-11</td></tr><tr><td>hilbert systems / 12 / iterations</td><td>1,387</td></tr><tr><td>hilbert systems / 12 / condition number</td><td>1.719e+16</td></tr><tr><td>hilbert systems / 12 / relative residual</td><td>6.054e-08</td></tr></table><h2>Convergence Tradeoffs</h2><img alt="convergence-tradeoffs" src="results/convergence-tradeoffs.png"><details><summary>Full result structure</summary><pre>{
+  &quot;scalar_global&quot;: {
+    &quot;x&quot;: -1.6055696766393135,
+    &quot;objective&quot;: -19.09344719019783,
+    &quot;candidates&quot;: [
+      -3.0,
+      3.0,
+      -1.6055696766393135,
+      1.5555195260365493,
+      0.05005015060276373
+    ]
+  },
+  &quot;box_global&quot;: {
+    &quot;minimum&quot;: [
+      -0.5,
+      3.0,
+      -118.375
+    ],
+    &quot;maximum&quot;: [
+      3.0,
+      -0.05,
+      140.025
+    ]
+  },
+  &quot;constrained_projection&quot;: {
+    &quot;point&quot;: [
+      0.2896238961062687,
+      1.6631297934083045
+    ],
+    &quot;objective&quot;: 3.36512753967644,
+    &quot;max_violation&quot;: 7.771561172376096e-15
+  },
+  &quot;trust_regions&quot;: [
+    {
+      &quot;start&quot;: [
+        0,
+        -1
+      ],
+      &quot;point&quot;: [
+        0.9999999999999969,
+        0.9999999999999937
+      ],
+      &quot;objective&quot;: 1.0896141253365226e-29,
+      &quot;gradient_norm&quot;: 4.4177391044704896e-14,
+      &quot;success&quot;: true
+    },
+    {
+      &quot;start&quot;: [
+        0,
+        0.5
+      ],
+      &quot;point&quot;: [
+        0.9999999999999948,
+        0.9999999999999896
+      ],
+      &quot;objective&quot;: 2.7228027181768986e-29,
+      &quot;gradient_norm&quot;: 1.0436096431476471e-14,
+      &quot;success&quot;: true
+    },
+    {
+      &quot;start&quot;: [
+        -1.2,
+        1
+      ],
+      &quot;point&quot;: [
+        0.9999999999999261,
+        0.9999999999997595
+      ],
+      &quot;objective&quot;: 8.62806211982294e-25,
+      &quot;gradient_norm&quot;: 4.127645323829004e-11,
+      &quot;success&quot;: true
+    }
+  ],
+  &quot;hilbert_systems&quot;: {
+    &quot;5&quot;: {
+      &quot;iterations&quot;: 7,
+      &quot;condition_number&quot;: 476607.25024258613,
+      &quot;relative_residual&quot;: 2.3488182846901772e-12
+    },
+    &quot;8&quot;: {
+      &quot;iterations&quot;: 23,
+      &quot;condition_number&quot;: 15257576109.216072,
+      &quot;relative_residual&quot;: 1.0837880188603762e-11
+    },
+    &quot;12&quot;: {
+      &quot;iterations&quot;: 1387,
+      &quot;condition_number&quot;: 1.7192889378684084e+16,
+      &quot;relative_residual&quot;: 6.053835530950882e-08
+    }
+  },
+  &quot;nonlinear_cg&quot;: [
+    {
+      &quot;start&quot;: [
+        0,
+        0
+      ],
+      &quot;point&quot;: [
+        3.0000000000751093,
+        2.0000000019144037
+      ],
+      &quot;objective&quot;: 6.53885363210907e-17,
+      &quot;gradient_norm&quot;: 7.973060310120116e-08,
+      &quot;iterations&quot;: 426
+    },
+    {
+      &quot;start&quot;: [
+        -4,
+        0
+      ],
+      &quot;point&quot;: [
+        3.5844283409694264,
+        -1.848126526404132
+      ],
+      &quot;objective&quot;: 2.8477377108298316e-17,
+      &quot;gradient_norm&quot;: 7.385141224464509e-08,
+      &quot;iterations&quot;: 55
+    },
+    {
+      &quot;start&quot;: [
+        4,
+        0
+      ],
+      &quot;point&quot;: [
+        3.5844283397451324,
+        -1.8481265255880865
+      ],
+      &quot;objective&quot;: 4.0130742262419144e-17,
+      &quot;gradient_norm&quot;: 6.323178759561006e-08,
+      &quot;iterations&quot;: 67
+    },
+    {
+      &quot;start&quot;: [
+        0,
+        -4
+      ],
+      &quot;point&quot;: [
+        -2.8051180877700226,
+        3.131312517662812
+      ],
+      &quot;objective&quot;: 3.621273578768723e-17,
+      &quot;gradient_norm&quot;: 7.23675103046387e-08,
+      &quot;iterations&quot;: 40
+    }
+  ],
+  &quot;pareto_candidates&quot;: &quot;21 values; see metrics.json for full data&quot;,
+  &quot;scope&quot;: &quot;Ill-conditioned residual convergence does not guarantee accurate solutions. Weighted sums do not recover every Pareto point in general.&quot;
+}</pre></details><footer>Calculated by the included native script. Public-repository status is recorded in the collection index.</footer></main></body></html>

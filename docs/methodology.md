@@ -1,0 +1,3 @@
+# Methodology and limitations
+
+Consolidates related numerical-method sections rather than presenting every exercise as a different product. Scalar and separable box extrema are certified by enumerating stationary and boundary candidates. Constrained projection includes a feasibility residual. Rosenbrock trust-region runs record optimizer status and gradient norms. Linear conjugate gradient checks symmetric positive-definite inputs and reports residuals and conditioning on Hilbert systems; a small residual alone does not establish an accurate solution. Nonlinear Fletcher–Reeves uses bounded backtracking and descent restarts. Weighted-sum Pareto points are candidates, not a claim that every Pareto solution was recovered.
